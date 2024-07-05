@@ -13,7 +13,7 @@ namespace CadEditor
 {
     public static class PluginLoader
     {
-        public static T loadPlugin<T>(string path)
+        public static T LoadPlugin<T>(string path)
         {
             string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (appPath == null)

@@ -106,17 +106,17 @@ namespace CadEditor
             int dataStride = ConfigScript.getScreenDataStride();
             if (wordLen == 1)
             {
-                return ConfigScript.convertScreenTile(arrayWithData[romAddr + index * dataStride]);
+                return ConfigScript.ConvertScreenTile(arrayWithData[romAddr + index * dataStride]);
             }
             else if (wordLen == 2)
             {
                 if (littleEndian)
                 {
-                    return ConfigScript.convertScreenTile(Utils.readWordLE(arrayWithData, romAddr + index * (dataStride * wordLen)));
+                    return ConfigScript.ConvertScreenTile(Utils.readWordLE(arrayWithData, romAddr + index * (dataStride * wordLen)));
                 }
                 else
                 {
-                    return ConfigScript.convertScreenTile(Utils.readWord(arrayWithData, romAddr + index * (dataStride * wordLen)));
+                    return ConfigScript.ConvertScreenTile(Utils.readWord(arrayWithData, romAddr + index * (dataStride * wordLen)));
                 }
             }
             return -1;
@@ -125,7 +125,7 @@ namespace CadEditor
         public static Screen getScreen(OffsetRec screenOffset,  int screenIndex)
         {
             var result = new int[Math.Max(64, screenOffset.recSize)];
-            var arrayWithData = Globals.dumpdata != null ? Globals.dumpdata : Globals.romdata;
+            var arrayWithData = dumpdata ?? romdata;
             int dataStride = ConfigScript.getScreenDataStride();
             int wordLen = ConfigScript.getWordLen();
             //bool littleEndian = ConfigScript.isLittleEndian();
@@ -165,7 +165,7 @@ namespace CadEditor
             return ConfigScript.videoGb.makeBigBlocks(videoTiles, blocksData, pal, count, curViewType);
         }
 
-        public static byte[] romdata;
+        public static byte[] romdata { get; set; }
         public static byte[] dumpdata;
         public static int chunksCount = 256;
         public static int videoPageSize = 4096;

@@ -60,7 +60,7 @@ namespace CadEditor
 
         private Form makeBlocksEditor()
         {
-            if (!ConfigScript.isUseSegaGraphics()) //isUseGbGraphics
+            if (!ConfigScript.isUseSegaGraphics()) //isUseGbGraphics разобраться что здесь происходит и почему именно сега
             {
                 var f = new BlockEdit();
                 f.setFormMain(this);

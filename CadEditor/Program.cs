@@ -20,7 +20,7 @@ namespace CadEditor
                     { "configname=",  v => OpenFile.configName = v },
                     { "config=",   v => globalConfigName = v },
                 };
-                var cmdOptions = optionSet.Parse(args);
+                List<string> cmdOptions = optionSet.Parse(args);
 
                 ConfigScript.LoadGlobalsFromFile(globalConfigName);
             }

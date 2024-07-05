@@ -102,7 +102,7 @@ namespace CadEditor
 
         private static void addPlugin(string pluginName)
         {
-            var plugin = PluginLoader.loadPlugin<IPlugin>(pluginName);
+            var plugin = PluginLoader.LoadPlugin<IPlugin>(pluginName);
             if (plugin != null)
                 plugins.Add(plugin);
         }
@@ -135,8 +135,8 @@ namespace CadEditor
 
         public static void LoadFromFile(string fileName)
         {
-            programStartDirectory = AppDomain.CurrentDomain.BaseDirectory + "/";
-            configDirectory = Path.GetDirectoryName(fileName) + "/";
+            _programStartDirectory = AppDomain.CurrentDomain.BaseDirectory + "/";
+            _configDirectory = Path.GetDirectoryName(fileName) + "/";
 
             var asm = new AsmHelper(CSScript.LoadCode(File.ReadAllText(fileName)));
             object data = null;
@@ -348,9 +348,9 @@ namespace CadEditor
 
             //auto load video plugins
 
-            loadPluginWithSilentCatch(() => videoNes = PluginLoader.loadPlugin<IVideoPluginNes>("PluginVideoNes.dll"));
-            loadPluginWithSilentCatch(() => videoSega = PluginLoader.loadPlugin<IVideoPluginSega>("PluginVideoSega.dll"));
-            loadPluginWithSilentCatch(() => videoGb = PluginLoader.loadPlugin<IVideoPluginGb>("PluginVideoGb.dll"));
+            loadPluginWithSilentCatch(() => videoNes = PluginLoader.LoadPlugin<IVideoPluginNes>("PluginVideoNes.dll"));
+            loadPluginWithSilentCatch(() => videoSega = PluginLoader.LoadPlugin<IVideoPluginSega>("PluginVideoSega.dll"));
+            loadPluginWithSilentCatch(() => videoGb = PluginLoader.LoadPlugin<IVideoPluginGb>("PluginVideoGb.dll"));
         }
 
         private static void loadPluginsFromCurrentConfig(AsmHelper asm, object data)
@@ -358,7 +358,7 @@ namespace CadEditor
             string[] pluginNames = callFromScript(asm, data, "getPluginNames", new string[0]);
             foreach (var pluginName in pluginNames)
             {
-                var p = PluginLoader.loadPlugin<IPlugin>(pluginName);
+                var p = PluginLoader.LoadPlugin<IPlugin>(pluginName);
                 if (p != null)
                 {
                     p.loadFromConfig(asm, data);
@@ -449,9 +449,9 @@ namespace CadEditor
             sortObjectsFunc(levelNo, listNo, objects);
         }
 
-         public static int convertScreenTile(int tile)
+         public static int ConvertScreenTile(int tile)
          {
-             return (convertScreenTileFunc ?? (v=>v))(tile);
+             return (convertScreenTileFunc ?? (v => v))(tile);
          }
 
          public static int backConvertScreenTile(int tile)
@@ -625,7 +625,7 @@ namespace CadEditor
 
         public static string getBlocksPicturesFilename()
         {
-            return configDirectory + blocksPicturesFilename;
+            return _configDirectory + blocksPicturesFilename;
         }
 
         public static bool isShowScrollsInLayout()
@@ -739,7 +739,7 @@ namespace CadEditor
         }
         //------------------------------------------------------------
 
-        public static T callFromScript<T>(AsmHelper script, object data, string funcName, T defaultValue = default(T), params object[] funcParams)
+        public static T callFromScript<T>(AsmHelper script, object data, string funcName, T defaultValue = default, params object[] funcParams)
         {
             try
             {
@@ -751,11 +751,11 @@ namespace CadEditor
             }
         }
 
-        private static string programStartDirectory;
-        private static string configDirectory;
+        private static string _programStartDirectory;
+        private static string _configDirectory;
 
-        public static string ProgramDirectory { get { return programStartDirectory; } }
-        public static string ConfigDirectory  { get { return configDirectory; } }
+        public static string ProgramDirectory { get { return _programStartDirectory; } }
+        public static string ConfigDirectory  { get { return _configDirectory; } }
 
         public static OffsetRec palOffset;
         public static OffsetRec videoOffset;

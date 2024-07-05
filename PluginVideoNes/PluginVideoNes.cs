@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CadEditor;
+using System;
 using System.Drawing;
-//using System.Windows.Forms;
-
-using CadEditor;
+using System.Linq;
 
 namespace PluginVideoNes
 {
@@ -15,6 +11,7 @@ namespace PluginVideoNes
         {
             return "Nes Video Plugin";
         }
+        //TODO тоже самое есть в файле Config.cs
         static Video()
         {
             nesColors[0] = Color.FromArgb(124, 124, 124);

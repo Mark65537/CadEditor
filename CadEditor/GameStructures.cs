@@ -10,16 +10,7 @@ using System.Drawing;
 namespace CadEditor
 {
     public struct OffsetRec
-    {
-        public OffsetRec(int beginAddr, int recCount, int recSize)
-        {
-            this.beginAddr = beginAddr;
-            this.recCount = recCount;
-            this.recSize = recSize;
-            this.width = 0;
-            this.height = 0;
-            //this.pointers = new int[0];
-        }
+    {        
 
         public OffsetRec(int beginAddr, int recCount, int recSize, int width = 0, int height = 0)
         {
@@ -33,7 +24,7 @@ namespace CadEditor
 
         public override string ToString()
         {
-            return String.Format("Start address:0x{0:X}. Records count:{1}, Record Size:{2}", beginAddr, recCount, recSize);
+            return string.Format("Start address:0x{0:X}. Records count:{1}, Record Size:{2}", beginAddr, recCount, recSize);
         }
 
         public int beginAddr;

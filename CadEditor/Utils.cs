@@ -72,15 +72,15 @@ namespace CadEditor
             int palSize = ConfigScript.isUseSegaGraphics() ? Globals.segaPalLen : Globals.palLen; //isUseGbGraphics
             var palette = new byte[palSize];
             int addr = ConfigScript.palOffset.beginAddr + palIndex * ConfigScript.palOffset.recSize;
-            if (!ConfigScript.isUseSegaGraphics())
+            if (ConfigScript.isUseSegaGraphics())
             {
                 for (int i = 0; i < palSize; i++)
-                    palette[i] = (byte)(Globals.romdata[addr + i] & 0x3F);
+                    palette[i] = Globals.romdata[addr + i];
             }
             else
             {
                 for (int i = 0; i < palSize; i++)
-                    palette[i] = Globals.romdata[addr + i];
+                    palette[i] = (byte)(Globals.romdata[addr + i] & 0x3F);
             }
             return palette;
         }

@@ -13,7 +13,7 @@ namespace CadEditor
         {
             try
             {
-                var globalConfigName = "Config.cs";
+                var globalConfigName = "CadEditor\\Config.cs";
 
                 var optionSet = new OptionSet() {
                     { "romname=",      v => OpenFile.fileName = v },

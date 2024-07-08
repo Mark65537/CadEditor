@@ -40,7 +40,7 @@ namespace CadEditor
             }
             else
             {
-                if (!Globals.loadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
+                if (!Globals.LoadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
                 {
                     Close();
                     return;
@@ -592,7 +592,7 @@ namespace CadEditor
             var f = new OpenFile();
             if (f.ShowDialog() == DialogResult.OK)
             {
-                if (!Globals.loadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
+                if (!Globals.LoadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
                 {
                     Close();
                     return false;
@@ -884,7 +884,7 @@ namespace CadEditor
         {
             if (UtilsGui.askToSave(ref dirty, saveToFile, returnCbLevelIndex))
             {
-                if (!Globals.loadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
+                if (!Globals.LoadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
                 {
                     return;
                 }

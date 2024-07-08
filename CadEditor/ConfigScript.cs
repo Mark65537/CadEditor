@@ -317,7 +317,7 @@ namespace CadEditor
 
             loadAllPlugins(asm, data);
 
-            ConfigScript.videoNes.updateColorsFromConfig();
+            videoNes.updateColorsFromConfig();
         }
 
         private static GetLevelRecsFunc getLevelRecsFuncDefault()

@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Linq;
-
-using System.Drawing;
 
 namespace CadEditor
 {
-    public static class Globals
+    public class Globals
     {
-        static Globals()
-        {
-        }
-
-        public static bool loadData(string filename, string dumpfile, string configFilename)
+        public static bool LoadData(string filename, string dumpfile, string configFilename)
         {
             try
             {
@@ -72,7 +63,7 @@ namespace CadEditor
                 {
                     using (FileStream f = File.OpenWrite(OpenFile.dumpName))
                     {
-                        f.Write(Globals.dumpdata, 0, Globals.dumpdata.Length);
+                        f.Write(dumpdata, 0, dumpdata.Length);
                         f.Seek(0, SeekOrigin.Begin);
                     }
                 }

@@ -297,9 +297,9 @@ namespace CadEditor
 
             if (blocksPicturesFilename != "")
             {
-                if (!File.Exists(ConfigScript.getBlocksPicturesFilename()))
+                if (!File.Exists(getBlocksPicturesFilename()))
                 {
-                    throw new Exception("File does not exists: " + ConfigScript.getBlocksPicturesFilename());
+                    throw new Exception("File does not exists: " + getBlocksPicturesFilename());
                 }
             }
             blocksPicturesWidth = callFromScript(asm, data, "getPictureBlocksWidth", 32); 
@@ -325,6 +325,11 @@ namespace CadEditor
             return () => { return new List<LevelRec>() { new LevelRec(0, 0, 1, 1, 0) }; };
         }
 
+        /// <summary>
+        /// Очистка и загрузка глобальных и необходимых для конфига плагинов
+        /// </summary>
+        /// <param name="asm"></param>
+        /// <param name="data"></param>
         private static void loadAllPlugins(AsmHelper asm, object data)
         {
             cleanPlugins();
@@ -692,7 +697,7 @@ namespace CadEditor
 
         public static int getTilesAddr(int id)
         {
-            var getAddrFunc = ConfigScript.getBlocksAddrFunc;
+            var getAddrFunc = getBlocksAddrFunc;
             return getAddrFunc?.Invoke(id) ?? getTilesAddrDefault(id);
 
         }

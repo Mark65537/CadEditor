@@ -18,7 +18,7 @@ namespace CadEditor
             string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (appPath == null)
             {
-                return default(T);
+                return default;
             }
             Assembly currentAssembly = Assembly.LoadFile(Path.Combine(appPath, path));
             foreach (Type type in currentAssembly.GetTypes())
@@ -26,7 +26,7 @@ namespace CadEditor
                 if (type.GetInterfaces().Contains(typeof(T)))
                     return (T)Activator.CreateInstance(type);
             }
-            return default(T);
+            return default;
         }
     }
 
@@ -41,7 +41,7 @@ namespace CadEditor
 
     public interface IVideoPluginNes
     {
-        void updateColorsFromConfig();
+        void updateColorsFromConfig(); 
 
         Image[] makeBigBlocks(int videoNo, int bigBlockNo, int blockNo, int palleteNo, MapViewType smallObjectsViewType = MapViewType.Tiles,
             MapViewType curViewType = MapViewType.Tiles, int heirarchyLevel = 0);

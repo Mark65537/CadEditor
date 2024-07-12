@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using CadEditor;
 using System.Runtime.InteropServices;
 using System.IO;
+using CadEditor;
 
 namespace PluginCompressLZKN
 {
@@ -45,7 +41,7 @@ namespace PluginCompressLZKN
                 tbLog.Text = "";
                 tbLog.AppendText("--------------------------------------------------------------------------------------------------\n");
                 tbLog.AppendText("Job start\n");
-                tbLog.AppendText(String.Format("Current file name: {0}\n", OpenFile.fileName));
+                tbLog.AppendText(string.Format("Current file name: {0}\n", OpenFile.fileName));
 
                 int selectedAddressIndex = cbAddress.SelectedIndex;
                 var inputFilename = CompressConfig.compressParams[selectedAddressIndex].fname;

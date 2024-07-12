@@ -311,7 +311,7 @@ namespace PluginVideoNes
 
         private static int mixBits(bool hi, bool lo)
         {
-            return (hi ? 1 : 0) << 1 | (lo ? 1 : 0);
+            return (hi ? 1 : 0) << 1 | (lo ? 1 : 0);//2 * hi + lo
         }
 
         public static int nesColorsCount = 64;

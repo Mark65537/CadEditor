@@ -78,7 +78,7 @@ namespace CadEditor
             {
                 using (FileStream f = File.OpenWrite(OpenFile.fileName))
                 {
-                    f.Write(Globals.romdata, 0, Globals.romdata.Length);
+                    f.Write(romdata, 0, romdata.Length);
                     f.Seek(0, SeekOrigin.Begin);
                 }
             }

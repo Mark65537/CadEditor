@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="CadEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CadEditor\CadEditor.exe</HintPath>
+      <HintPath>..\bin\Debug\CadEditor.exe</HintPath>
     </Reference>
     <Reference Include="CSScriptLibrary, Version=3.11.0.0, Culture=neutral, PublicKeyToken=70fcc3d18c749033, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

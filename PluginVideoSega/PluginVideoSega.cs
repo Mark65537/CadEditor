@@ -174,7 +174,8 @@ namespace PluginVideoSega
 
                     Bitmap tile = getTile(tiles, word, palette, palIndex, hf, vf);
 
-                    using (var g = Graphics.FromImage(block)) g.DrawImage(tile, new Rectangle(x * 8, y * 8, 8, 8));
+                    using (var g = Graphics.FromImage(block))
+                        g.DrawImage(tile, new Rectangle(x * 8, y * 8, 8, 8));
                 }
             return block;
         }

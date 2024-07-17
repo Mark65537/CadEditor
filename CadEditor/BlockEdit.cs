@@ -109,7 +109,7 @@ namespace CadEditor
             var chunk = ConfigScript.getVideoChunk(curActiveVideo);
             for (int i = 0; i < 4; i++)
             {
-                videoSprites[i] = Enumerable.Range(0,256).Select(t => ((Bitmap)UtilsGDI.ResizeBitmap(ConfigScript.videoNes.makeImage(t, chunk, palette, i), 16, 16))).ToArray();
+                videoSprites[i] = Enumerable.Range(0,256).Select(t => ((Bitmap)UtilsGDI.ResizeBitmap(ConfigScript.videoNes.GetTile(t, chunk, palette, i), 16, 16))).ToArray();
             }
         }
 

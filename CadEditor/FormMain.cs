@@ -270,6 +270,7 @@ namespace CadEditor
             }
         }
 
+        //TODO переименовать
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             if (!fileLoaded)

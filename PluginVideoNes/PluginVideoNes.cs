@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace PluginVideoNes
 {
-    public class Video : IVideoPluginNes
+    public class PluginVideoNes : IVideoPluginNes
     {
         public string getName()
         {
             return "Nes Video Plugin";
         }
         //TODO тоже самое есть в файле Config.cs
-        static Video()
+        static PluginVideoNes()
         {
             nesColors[0] = Color.FromArgb(124, 124, 124);
             nesColors[1] = Color.FromArgb(0, 0, 252);
@@ -106,7 +106,7 @@ namespace PluginVideoNes
                 nesColors = ConfigScript.nesColors;
         }
 
-        public Bitmap makeImage(int index, byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false)
+        public Bitmap GetTile(int index, byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false)
         {
             Bitmap res = new Bitmap(8, 8);
             using (Graphics g = Graphics.FromImage(res))
@@ -138,7 +138,7 @@ namespace PluginVideoNes
             {
                 for (int i = 0; i < chunkCount; i++)
                 {
-                    Bitmap onePic = makeImage(i, videoChunk, pallete, subPalIndex, withAlpha);
+                    Bitmap onePic = GetTile(i, videoChunk, pallete, subPalIndex, withAlpha);
                     g.DrawImage(onePic, new Rectangle(i * 8, 0, 8, 8));
                 }
             }
@@ -147,7 +147,7 @@ namespace PluginVideoNes
 
         public Bitmap makeImageRectangle(byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false)
         {
-            var images = Enumerable.Range(0, 256).Select(i => makeImage(i, videoChunk, pallete, subPalIndex, withAlpha));
+            var images = Enumerable.Range(0, 256).Select(i => GetTile(i, videoChunk, pallete, subPalIndex, withAlpha));
             return UtilsGDI.GlueImages(images.ToArray(), 16, 16);
         }
 
@@ -201,10 +201,10 @@ namespace PluginVideoNes
 
             byte[] palette = ConfigScript.getPal(palId);
             var range256 = Enumerable.Range(0, 256);
-            var objStrip1 = range256.Select(i => makeImage(i, videoChunk, palette, 0)).ToArray();
-            var objStrip2 = range256.Select(i => makeImage(i, videoChunk, palette, 1)).ToArray();
-            var objStrip3 = range256.Select(i => makeImage(i, videoChunk, palette, 2)).ToArray();
-            var objStrip4 = range256.Select(i => makeImage(i, videoChunk, palette, 3)).ToArray();
+            var objStrip1 = range256.Select(i => GetTile(i, videoChunk, palette, 0)).ToArray();
+            var objStrip2 = range256.Select(i => GetTile(i, videoChunk, palette, 1)).ToArray();
+            var objStrip3 = range256.Select(i => GetTile(i, videoChunk, palette, 2)).ToArray();
+            var objStrip4 = range256.Select(i => GetTile(i, videoChunk, palette, 3)).ToArray();
             var objStrips = new[] { objStrip1, objStrip2, objStrip3, objStrip4 };
 
             var bitmaps = makeObjects(objects, objStrips, drawType, constantSubpal);

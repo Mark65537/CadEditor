@@ -201,7 +201,7 @@ namespace CadEditor
             useGbGraphics = callFromScript(asm, data, "*.isUseGbGraphics", false);
             blockSize4x4 = callFromScript(asm, data, "*.isBlockSize4x4", false);
             buildScreenFromSmallBlocks = callFromScript(asm, data, "isBuildScreenFromSmallBlocks", false);
-            getLevelRecsFunc = callFromScript<GetLevelRecsFunc>(asm, data, "*.getLevelRecsFunc", ConfigScript.getLevelRecsFuncDefault());
+            getLevelRecsFunc = callFromScript<GetLevelRecsFunc>(asm, data, "*.getLevelRecsFunc", getLevelRecsFuncDefault());
 
             //todo: remove or change to many lists interface
             minObjCoordX = callFromScript(asm, data, "*.getMinObjCoordX", 0);
@@ -590,7 +590,7 @@ namespace CadEditor
 
         public static string getObjTypesPicturesDir()
         {
-            return ConfigScript.ConfigDirectory + objTypesPicturesDir;
+            return ConfigDirectory + objTypesPicturesDir;
         }
 
         public static string[] getBlockTypeNames()
@@ -687,12 +687,12 @@ namespace CadEditor
 
         public static int getLayoutAddr(int index)
         {
-            return ConfigScript.getLevelRec(index).layoutAddr;
+            return getLevelRec(index).layoutAddr;
         }
 
         public static int getScrollAddr(int index)
         {
-            return getLayoutAddr(index) + ConfigScript.getScrollsOffsetFromLayout();
+            return getLayoutAddr(index) + getScrollsOffsetFromLayout();
         }
 
         public static int getTilesAddr(int id)
@@ -704,33 +704,33 @@ namespace CadEditor
 
         private static int getTilesAddrDefault(int id)
         {
-            return ConfigScript.blocksOffset.beginAddr + ConfigScript.blocksOffset.recSize * id;
+            return blocksOffset.beginAddr + blocksOffset.recSize * id;
         }
 
         public static int getBigTilesAddr(int hierarchyLevel, int id)
         {
             GetBigBlocksAddrFunc getAddrFunc = null;
-            if (hierarchyLevel < ConfigScript.getBigBlocksAddrFuncs.Length)
+            if (hierarchyLevel < getBigBlocksAddrFuncs.Length)
             {
-                getAddrFunc = ConfigScript.getBigBlocksAddrFuncs[hierarchyLevel];
+                getAddrFunc = getBigBlocksAddrFuncs[hierarchyLevel];
             }
             return getAddrFunc?.Invoke(id) ?? getBigTilesAddrDefault(hierarchyLevel, id);
         }
 
         private static int getBigTilesAddrDefault(int hierarchyLevel, int id)
         {
-            var bigBlocksOffset = ConfigScript.bigBlocksOffsets[hierarchyLevel];
+            var bigBlocksOffset = bigBlocksOffsets[hierarchyLevel];
             return bigBlocksOffset.beginAddr + bigBlocksOffset.recSize * id;
         }
 
         public static int getLevelWidth(int levelNo)
         {
-            return ConfigScript.getLevelRec(levelNo).width;
+            return getLevelRec(levelNo).width;
         }
 
         public static int getLevelHeight(int levelNo)
         {
-            return ConfigScript.getLevelRec(levelNo).height;
+            return getLevelRec(levelNo).height;
         }
 
         public static int getbigBlocksHierarchyCount()

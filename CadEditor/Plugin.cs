@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Reflection;
-using System.IO;
 using System.Drawing;
-using System.Drawing.Imaging;
-using CSScriptLibrary;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace CadEditor
 {
@@ -48,7 +43,7 @@ namespace CadEditor
         Image[] makeBigBlocks(int videoNo, int bigBlockNo,int blockNo, BigBlock[] bigBlockData, int palleteNo, MapViewType smallObjectsViewType = MapViewType.Tiles,
             MapViewType curViewType = MapViewType.Tiles, int heirarchyLevel = 0);
 
-        Bitmap makeImage(int index, byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false);
+        Bitmap GetTile(int index, byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false);
         Bitmap makeImageStrip(byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false);
         Bitmap makeImageRectangle(byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false);
 

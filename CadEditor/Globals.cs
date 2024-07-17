@@ -135,7 +135,7 @@ namespace CadEditor
 
             return new Screen(new BlockLayer(result), w, h);
         }
-
+        //TODO переместить в pluginVideoSega
         public static Image[] makeSegaBigBlocks(int curActiveVideoNo, int curActiveBigBlockNo, int curActivePalleteNo, MapViewType curViewType)
         {
             byte[] mapping = ConfigScript.getSegaMapping(curActiveBigBlockNo);
@@ -144,7 +144,7 @@ namespace CadEditor
             int count = ConfigScript.getBigBlocksCount(ConfigScript.getbigBlocksHierarchyCount() - 1, curActiveBigBlockNo);
             return ConfigScript.videoSega.makeBigBlocks(mapping, videoTiles, pal, count, curViewType);
         }
-
+        //TODO переместить в pluginVideoGB
         public static Image[] makeGbBigBlocks(int curActiveVideoNo, int curActiveBigBlockNo, int curActivePalleteNo, MapViewType curViewType)
         {
             byte[] videoTiles = ConfigScript.getVideoChunk(curActiveVideoNo);

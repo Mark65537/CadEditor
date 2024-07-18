@@ -1066,11 +1066,11 @@ namespace CadEditor
                 sb.Append(p.getName() + "\n");
             }
             if (ConfigScript.videoNes != null)
-                sb.Append(ConfigScript.videoNes.getName() + "\n");
+                sb.Append(ConfigScript.videoNes.GetName() + "\n");
             if (ConfigScript.videoSega != null)
-                sb.Append(ConfigScript.videoSega.getName() + "\n");
+                sb.Append(ConfigScript.videoSega.GetName() + "\n");
             if (ConfigScript.videoGb != null)
-                sb.Append(ConfigScript.videoGb.getName() + "\n");
+                sb.Append(ConfigScript.videoGb.GetName() + "\n");
             MessageBox.Show(sb.ToString());
         }
 

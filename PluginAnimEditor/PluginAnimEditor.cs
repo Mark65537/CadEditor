@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Resources;
-using System.Windows.Forms;
-using System.Drawing;
-using CadEditor;
+﻿using CadEditor;
 using CadEnemyEditor;
 using CSScriptLibrary;
+using System;
+using System.Drawing;
+using System.Resources;
+using System.Windows.Forms;
 
 namespace PluginAnimEditor
 {

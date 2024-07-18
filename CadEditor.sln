@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadEditor", "CadEditor\CadEditor.csproj", "{BD2A990C-9D64-472D-9C78-1429C666604B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginAnimEditor", "CadEnemyEditor\PluginAnimEditor.csproj", "{56D14DAD-7662-42D2-BEA1-B6E427807D30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsVerifier", "SettingsVerifier\SettingsVerifier.csproj", "{3FD2E457-380B-4AF3-B8B5-A11D6FA228DA}"
 EndProject
@@ -62,6 +60,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginVideoGameBoy", "Plugi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginBattletoadsRaceEditor", "PluginBattletoadsRaceEditor\PluginBattletoadsRaceEditor.csproj", "{1A367851-994F-4C1E-934F-70FA72449DEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginAnimEditor", "PluginAnimEditor\PluginAnimEditor.csproj", "{56D14DAD-7662-42D2-BEA1-B6E427807D30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,15 +82,6 @@ Global
 		{BD2A990C-9D64-472D-9C78-1429C666604B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{BD2A990C-9D64-472D-9C78-1429C666604B}.Release|x86.ActiveCfg = Release|x86
 		{BD2A990C-9D64-472D-9C78-1429C666604B}.Release|x86.Build.0 = Release|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|x86.ActiveCfg = Debug|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|x86.Build.0 = Debug|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|Any CPU.ActiveCfg = Release|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|x86.ActiveCfg = Release|x86
-		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|x86.Build.0 = Release|x86
 		{3FD2E457-380B-4AF3-B8B5-A11D6FA228DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FD2E457-380B-4AF3-B8B5-A11D6FA228DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FD2E457-380B-4AF3-B8B5-A11D6FA228DA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -249,6 +240,18 @@ Global
 		{1A367851-994F-4C1E-934F-70FA72449DEA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1A367851-994F-4C1E-934F-70FA72449DEA}.Release|x86.ActiveCfg = Release|Any CPU
 		{1A367851-994F-4C1E-934F-70FA72449DEA}.Release|x86.Build.0 = Release|Any CPU
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Any CPU.Build.0 = Debug|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|x86.ActiveCfg = Debug|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Debug|x86.Build.0 = Debug|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|Any CPU.ActiveCfg = Release|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|Any CPU.Build.0 = Release|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|Mixed Platforms.Build.0 = Release|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|x86.ActiveCfg = Release|x86
+		{56D14DAD-7662-42D2-BEA1-B6E427807D30}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

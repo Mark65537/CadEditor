@@ -7,10 +7,11 @@ namespace PluginVideoNes
 {
     public class PluginVideoNes : IVideoPluginNes
     {
-        public string getName()
+        public string GetName()
         {
             return "Nes Video Plugin";
         }
+
         //TODO тоже самое есть в файле Config.cs
         static PluginVideoNes()
         {
@@ -108,8 +109,8 @@ namespace PluginVideoNes
 
         public Bitmap GetTile(int index, byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false)
         {
-            Bitmap res = new Bitmap(8, 8);
-            using (Graphics g = Graphics.FromImage(res))
+            Bitmap retn = new Bitmap(8, 8);
+            using (Graphics g = Graphics.FromImage(retn))
             {
                 int i = index;
                 int beginIndex = 16 * i;
@@ -120,15 +121,16 @@ namespace PluginVideoNes
                         bool bitLo = Utils.getBit(videoChunk[beginIndex + line], 8 - pixel);
                         bool bitHi = Utils.getBit(videoChunk[beginIndex + line + 8], 8 - pixel);
                         int palIndex = mixBits(bitHi, bitLo);
+
                         int fullPalIndex = subPalIndex * 4 + palIndex;
                         bool isBackColor = fullPalIndex % 4 == 0;
                         int colorNo = pallete[isBackColor ? 0 : fullPalIndex];
                         Color c = (withAlpha && isBackColor) ? Color.FromArgb(0) : nesColors[colorNo];
-                        res.SetPixel(pixel, line, c);
+                        retn.SetPixel(pixel, line, c);
                     }
                 }
             }
-            return res;
+            return retn;
         }
 
         public Bitmap makeImageStrip(byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false)
@@ -244,7 +246,7 @@ namespace PluginVideoNes
             //tt version hardcode
             Image[][] smallBlocksAll = null;
 
-            bool smallBlockHasSubpals = bigBlockIndexes==null ? true : bigBlockIndexes[0].smallBlocksWithPal();
+            bool smallBlockHasSubpals = bigBlockIndexes == null || bigBlockIndexes[0].smallBlocksWithPal();
             if (!smallBlockHasSubpals)
             {
                 smallBlocksAll = new Image[4][];

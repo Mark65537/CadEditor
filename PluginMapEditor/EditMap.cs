@@ -18,7 +18,7 @@ namespace CadEditor
             InitializeComponent();
         }
 
-        int TILE_SIZE = 16;
+        const int TILE_SIZE = 16;
         bool showSecondNametable;
 
         private void reloadAllData()
@@ -33,7 +33,7 @@ namespace CadEditor
                 var images = new Image[256];
                 for (int t = 0; t < 256; t++)
                 {
-                    images[t] = UtilsGDI.ResizeBitmap(ConfigScript.videoNes.makeImage(t, chunk, curPal, i), 16, 16);
+                    images[t] = UtilsGDI.ResizeBitmap(ConfigScript.videoNes.GetTile(t, chunk, curPal, i), 16, 16);
                 }
                 videos[i] = images;
             }

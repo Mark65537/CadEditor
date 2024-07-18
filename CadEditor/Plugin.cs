@@ -33,14 +33,20 @@ namespace CadEditor
         void loadFromConfig(object asm, object data); //asm is CSScriptLibrary.AsmHelper
         string getName();
     }
-
-    public interface IVideoPluginNes
+    /// <summary>
+    /// Этот интерфейс должны наследовать все Видео Плагины
+    /// </summary>
+    public interface IVideoPlugin
+    {
+        string GetName();
+    }
+    public interface IVideoPluginNes : IVideoPlugin
     {
         void updateColorsFromConfig(); 
 
         Image[] makeBigBlocks(int videoNo, int bigBlockNo, int blockNo, int palleteNo, MapViewType smallObjectsViewType = MapViewType.Tiles,
             MapViewType curViewType = MapViewType.Tiles, int heirarchyLevel = 0);
-        Image[] makeBigBlocks(int videoNo, int bigBlockNo,int blockNo, BigBlock[] bigBlockData, int palleteNo, MapViewType smallObjectsViewType = MapViewType.Tiles,
+        Image[] makeBigBlocks(int videoNo, int bigBlockNo, int blockNo, BigBlock[] bigBlockData, int palleteNo, MapViewType smallObjectsViewType = MapViewType.Tiles,
             MapViewType curViewType = MapViewType.Tiles, int heirarchyLevel = 0);
 
         Bitmap GetTile(int index, byte[] videoChunk, byte[] pallete, int subPalIndex, bool withAlpha = false);
@@ -55,20 +61,17 @@ namespace CadEditor
         Bitmap makeScreen(int scrNo, int levelNo, int videoNo, int bigBlockNo, int blockNo, int palleteNo, bool withBorders = true);
 
         Color[] defaultNesColors { get; set; }
-
-        string getName();
     }
 
-    public interface IVideoPluginGb
+    public interface IVideoPluginGb : IVideoPlugin
     {
         Image[] makeBigBlocks(byte[] ppuData, byte[] tiles, byte[] pallette, int count, MapViewType curViewType = MapViewType.Tiles);
         Color[] getPalette(byte[] pal);
         Bitmap getTile(byte[] ppuData, Color[] palette, int no);
         Bitmap getTilesRectangle(byte[] ppuData, Color[] palette);
-        string getName();
     }
 
-    public interface IVideoPluginSega
+    public interface IVideoPluginSega : IVideoPlugin
     {
         Image[] makeBigBlocks(byte[] mapping, byte[] tiles, byte[] palette, int count, MapViewType curViewType = MapViewType.Tiles);
         Color[] getPalette(byte[] pal);
@@ -77,7 +80,5 @@ namespace CadEditor
         byte[] getArrayFrom2ColorTile(Bitmap tile);
         byte[] getArrayFrom2ColorBlock(Bitmap block);
         Bitmap getTile(byte[] tiles, ushort word, Color[] palette, byte palIndex, bool hf, bool vf);
-
-        string getName();
     }
 }

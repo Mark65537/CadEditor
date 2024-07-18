@@ -7,9 +7,9 @@ namespace PluginVideoSega
 {
     public class PluginVideoSega : IVideoPluginSega
     {
-        public string getName()
+        public string GetName()
         {
-            return "Sega Video Plugin";
+            throw new NotImplementedException();
         }
         public Image[] makeBigBlocks(byte[] mapping, byte[] tiles, byte[] palette, int count, MapViewType curViewType = MapViewType.Tiles)
         {
@@ -33,7 +33,11 @@ namespace PluginVideoSega
             }
             return result;
         }
-
+        /// <summary>
+        /// Конвертирование из массива байтов в RGB палитру
+        /// </summary>
+        /// <param name="pal">массив байт палитры из рома. Размер всегда должен быть не меньше 128</param>
+        /// <returns>Массив цветов в формате RGB</returns>
         public Color[] getPalette(byte[] pal)
         {
             Color[] retn = new Color[0x40];
@@ -51,7 +55,7 @@ namespace PluginVideoSega
             retn[0x00] =
             retn[0x10] =
             retn[0x20] =
-            retn[0x30] = Color.FromArgb(0xFF, 0xDC, 0xDC);
+            retn[0x30] = Color.FromArgb(0xFF, 0xDC, 0xDC);//цвет заднего фона
             return retn;
         }
 
@@ -153,7 +157,8 @@ namespace PluginVideoSega
 
                     Bitmap tile = getTile(tiles, word, palette, palIndex, hf, vf);
 
-                    using (var g = Graphics.FromImage(block)) g.DrawImage(tile, new Rectangle(x * 8, y * 8, 8, 8));
+                    using (var g = Graphics.FromImage(block)) 
+                        g.DrawImage(tile, new Rectangle(x * 8, y * 8, 8, 8));
                 }
             return block;
         }
@@ -176,6 +181,8 @@ namespace PluginVideoSega
                 }
             return block;
         }
+
+        
     }
     //---------------------------------------------------------------------------------------------
 }

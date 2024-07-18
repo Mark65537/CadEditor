@@ -33,6 +33,7 @@ namespace PluginVideoSega
             }
             return result;
         }
+        
         /// <summary>
         /// Конвертирование из массива байтов в RGB палитру
         /// </summary>
@@ -40,18 +41,17 @@ namespace PluginVideoSega
         /// <returns>Массив цветов в формате RGB</returns>
         public Color[] getPalette(byte[] pal)
         {
-            Color[] retn = new Color[0x40];
+            Color[] retn = new Color[64];
             int offset = 0;
-            for (int y = 0; y < 4; y++)
-                for (int x = 0; x < 16; x++, offset += 2)
-                {
-                    ushort w = pal.readUInt16Be(offset);
-                    byte r = (byte)((w & 0xE) * 0x10);
-                    byte g = (byte)(((w / 0x10) & 0xE) * 0x10);
-                    byte b = (byte)(((w / 0x100) & 0xE) * 0x10);
-                    retn[y * 16 + x] = Color.FromArgb(r, g, b);
+            for (int i = 0; i < 64; i++, offset += 2)
+            {
+                ushort w = (ushort)((pal[offset] << 8) | pal[offset + 1]);
+                byte r = (byte)((w & 0x0E) << 4);
+                byte g = (byte)((w & 0xE0) >> 1);
+                byte b = (byte)((w & 0x0E00) >> 5);
+                retn[i] = Color.FromArgb(r, g, b);
+            }
 
-                }
             retn[0x00] =
             retn[0x10] =
             retn[0x20] =

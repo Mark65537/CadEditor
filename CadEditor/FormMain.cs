@@ -56,6 +56,7 @@ namespace CadEditor
                  { bttBlocks,       makeBlocksEditor },
                  { bttEnemies,      ()=>{ var f = new EnemyEditor();  f.setFormMain(this); return f;}  },
             };
+            MinimumSize = Size;
         }
 
         private Form makeBlocksEditor()

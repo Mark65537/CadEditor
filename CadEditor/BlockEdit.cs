@@ -78,7 +78,7 @@ namespace CadEditor
             using (Graphics g = Graphics.FromImage(b))
             {
                 for (int i = 0; i < Globals.palLen; i++)
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[palette[i]]), i * 16, 0, 16, 16);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[palette[i]]), i * 16, 0, 16, 16);
             }
             paletteMap.Image = b;
 
@@ -89,10 +89,10 @@ namespace CadEditor
                 var sb = new Bitmap(16 * 4, 16);
                 using (Graphics g = Graphics.FromImage(sb))
                 {
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[palette[i * 4]]), 0, 0, 16, 16);
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[palette[i * 4 + 1]]), 16, 0, 16, 16);
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[palette[i * 4 + 2]]), 32, 0, 16, 16);
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[palette[i * 4 + 3]]), 48, 0, 16, 16);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[palette[i * 4]]), 0, 0, 16, 16);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[palette[i * 4 + 1]]), 16, 0, 16, 16);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[palette[i * 4 + 2]]), 32, 0, 16, 16);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[palette[i * 4 + 3]]), 48, 0, 16, 16);
                 }
                 subpalSprites.Images.Add(sb);
             }

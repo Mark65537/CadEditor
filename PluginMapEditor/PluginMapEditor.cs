@@ -14,7 +14,7 @@ namespace PluginMapEditor
 
     public class PluginMapEditor : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Map Editor";
         }

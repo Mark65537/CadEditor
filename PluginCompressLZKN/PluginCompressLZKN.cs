@@ -12,7 +12,7 @@ namespace PluginCompressLZKN
 {
     class PluginCompressLZKN : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Compress manager for KONAMI games uses LZKN compression";
         }

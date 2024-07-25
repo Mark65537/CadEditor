@@ -1064,7 +1064,7 @@ namespace CadEditor
             sb.Append("Loaded Plugins:\n\n");
             foreach (var p in ConfigScript.plugins)
             {
-                sb.Append(p.getName() + "\n");
+                sb.Append(p.GetName() + "\n");
             }
             if (ConfigScript.videoNes != null)
                 sb.Append(ConfigScript.videoNes.GetName() + "\n");

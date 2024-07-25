@@ -11,7 +11,7 @@ namespace PluginHexEditor
 {
     public class PluginHexEditor : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Hex Editor";
         }

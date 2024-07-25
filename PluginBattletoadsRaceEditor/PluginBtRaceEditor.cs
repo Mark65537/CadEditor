@@ -13,7 +13,7 @@ namespace BtRaceEditor
 {
     class PluginBtRaceEditor : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Battletoads Race Editor";
         }

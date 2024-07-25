@@ -10,7 +10,7 @@ namespace PluginAnimEditor
 {
     class PluginAnimEditor : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Anim Editor (Capcom)";
         }

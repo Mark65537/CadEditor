@@ -427,7 +427,7 @@ namespace CadEnemyEditor
             {
                 for (int i = 0; i < 16; i++)
                 {
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[pal[i]]), i % 4 * 16, (i / 4) * 16, 16, 16);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[pal[i]]), i % 4 * 16, (i / 4) * 16, 16, 16);
                 }
             }
             pbPal.Image = palImage;

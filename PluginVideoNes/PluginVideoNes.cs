@@ -305,7 +305,7 @@ namespace PluginVideoNes
             }));
         }
 
-        public Color[] defaultNesColors
+        public Color[] DefaultNesColors
         {
             get { return nesColors; }
             set { nesColors = value; }

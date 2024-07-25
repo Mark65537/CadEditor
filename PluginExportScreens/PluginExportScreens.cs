@@ -12,7 +12,7 @@ namespace PluginExportScreens
 {
     public class PluginExportScreens : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Export screens";
         }

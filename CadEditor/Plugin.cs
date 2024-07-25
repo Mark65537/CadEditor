@@ -25,24 +25,30 @@ namespace CadEditor
         }
     }
 
-    //--------------------------------------------------------------------------------------------------------------
-    public interface IPlugin
+    #region Interfaces
+    /// <summary>
+    /// Базовый интерфейс который должны наследовать все остальные интерфейсы плагинов
+    /// </summary>
+    public interface IPluginBase
+    {
+        string GetName();
+    }
+    public interface IPlugin : IPluginBase
     {
         void addSubeditorButton(FormMain formMain);
         void addToolButton(FormMain formMain);
         void loadFromConfig(object asm, object data); //asm is CSScriptLibrary.AsmHelper
-        string getName();
     }
     /// <summary>
     /// Этот интерфейс должны наследовать все Видео Плагины
     /// </summary>
-    public interface IVideoPlugin
+    public interface IVideoPlugin : IPluginBase
     {
-        string GetName();
+        //TODO добавить необходимые методы, например GetPalette
     }
     public interface IVideoPluginNes : IVideoPlugin
     {
-        void updateColorsFromConfig(); 
+        void updateColorsFromConfig();
 
         Image[] makeBigBlocks(int videoNo, int bigBlockNo, int blockNo, int palleteNo, MapViewType smallObjectsViewType = MapViewType.Tiles,
             MapViewType curViewType = MapViewType.Tiles, int heirarchyLevel = 0);
@@ -60,7 +66,7 @@ namespace CadEditor
 
         Bitmap makeScreen(int scrNo, int levelNo, int videoNo, int bigBlockNo, int blockNo, int palleteNo, bool withBorders = true);
 
-        Color[] defaultNesColors { get; set; }
+        Color[] DefaultNesColors { get; set; }
     }
 
     public interface IVideoPluginGb : IVideoPlugin
@@ -80,5 +86,6 @@ namespace CadEditor
         byte[] getArrayFrom2ColorTile(Bitmap tile);
         byte[] getArrayFrom2ColorBlock(Bitmap block);
         Bitmap getTile(byte[] tiles, ushort word, Color[] palette, byte palIndex, bool hf, bool vf);
-    }
+    } 
+    #endregion
 }

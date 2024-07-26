@@ -197,6 +197,7 @@
     <EmbeddedResource Include="SelectFile.resx">
       <DependentUpon>SelectFile.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -9,7 +9,7 @@ namespace PluginVideoSega
     {
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "Video Sega Plugin";
         }
         public Image[] makeBigBlocks(byte[] mapping, byte[] tiles, byte[] palette, int count, MapViewType curViewType = MapViewType.Tiles)
         {

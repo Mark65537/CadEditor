@@ -87,7 +87,8 @@ namespace CadEditor
             Properties.Settings.Default["FileName"] = fileName;
             Properties.Settings.Default["DumpName"] = dumpName;
             Properties.Settings.Default["ConfigName"] = configName;
-            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Save();//TODO не работает сохранение
+            Properties.Settings.Default.Upgrade();
 
             Close();
 

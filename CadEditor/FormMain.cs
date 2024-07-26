@@ -113,7 +113,7 @@ namespace CadEditor
             {
                 cbGroup.Items.Add(g.name);
             }
-            dirty = false; updateSaveVisibility();
+            isDirty = false; updateSaveVisibility();
             showNeiScreens = true;
             showAxis = true;
             showBrush = true;
@@ -349,7 +349,7 @@ namespace CadEditor
         bool useStructs;
         TileStructure curTileStruct;
 
-        private bool dirty;
+        private bool isDirty;
         private bool showNeiScreens;
         private bool showBrush;
 
@@ -434,7 +434,7 @@ namespace CadEditor
                         var layer = getActiveLayer(screens[screenNo + 1]);
                         curActiveBlock = ConfigScript.getBigTileNoFromScreen(layer.data, index);
                         ConfigScript.setBigTileToScreen(layer.data, index, curActiveBlock);
-                        dirty = true; updateSaveVisibility();
+                        isDirty = true; updateSaveVisibility();
                     }
                 }
                 else if (dx == -1)
@@ -445,7 +445,7 @@ namespace CadEditor
 
                         var layer = getActiveLayer(screens[screenNo - 1]);
                         ConfigScript.setBigTileToScreen(layer.data, index, curActiveBlock);
-                        dirty = true; updateSaveVisibility();
+                        isDirty = true; updateSaveVisibility();
                     }
                 }
                 else
@@ -458,14 +458,14 @@ namespace CadEditor
                         {
                             ConfigScript.setBigTileToScreen(layer.data, index, curActiveBlock);
                         }
-                        dirty = true; updateSaveVisibility();
+                        isDirty = true; updateSaveVisibility();
                     }
                     else
                     {
                         if (!isPhysicsLayerSelected()) //disable structs for physics layer
                         {
                             appendCurTileStruct(dx, dy);
-                            dirty = true;
+                            isDirty = true;
                             updateSaveVisibility();
                         }
                     }
@@ -516,13 +516,13 @@ namespace CadEditor
         private bool saveToFile()
         {
             ConfigScript.saveScreens(screens);
-            dirty = !Globals.flushToFile(); updateSaveVisibility();
-            return !dirty;
+            isDirty = !Globals.flushToFile(); updateSaveVisibility();
+            return !isDirty;
         }
 
         private void cbLevel_SelectedIndexChanged(object sender, EventArgs ev)
         {
-            if (!UtilsGui.askToSave(ref dirty, saveToFile, returnCbLevelIndex))
+            if (!UtilsGui.askToSave(ref isDirty, saveToFile, returnCbLevelIndex))
             {
                 updateSaveVisibility();
                 return;
@@ -554,7 +554,7 @@ namespace CadEditor
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!UtilsGui.askToSave(ref dirty, saveToFile, returnCbLevelIndex))
+            if (!UtilsGui.askToSave(ref isDirty, saveToFile, returnCbLevelIndex))
             {
                 updateSaveVisibility();
                 e.Cancel = true;
@@ -585,7 +585,7 @@ namespace CadEditor
 
         private bool openFile()
         {
-            if (!UtilsGui.askToSave(ref dirty, saveToFile, returnCbLevelIndex))
+            if (!UtilsGui.askToSave(ref isDirty, saveToFile, returnCbLevelIndex))
             {
                 updateSaveVisibility();
                 return false;
@@ -630,13 +630,13 @@ namespace CadEditor
 
         public void setDirty()
         {
-            dirty = true;
+            isDirty = true;
             updateSaveVisibility();
         }
 
         private void updateSaveVisibility()
         {
-            bttSave.Enabled = dirty;
+            bttSave.Enabled = isDirty;
         }
 
         private void cbShowAxis_CheckedChanged(object sender, EventArgs e)
@@ -662,7 +662,7 @@ namespace CadEditor
 
         public void subeditorOpen(Form f, ToolStripItem b, bool showDialog = false)
         {
-            if (UtilsGui.askToSave(ref dirty, saveToFile, returnCbLevelIndex))
+            if (UtilsGui.askToSave(ref isDirty, saveToFile, returnCbLevelIndex))
             {
                 updateSaveVisibility();
                 b.Enabled = false;
@@ -884,7 +884,7 @@ namespace CadEditor
 
         private void bttReload_Click(object sender, EventArgs e)
         {
-            if (UtilsGui.askToSave(ref dirty, saveToFile, returnCbLevelIndex))
+            if (UtilsGui.askToSave(ref isDirty, saveToFile, returnCbLevelIndex))
             {
                 if (!Globals.LoadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
                 {

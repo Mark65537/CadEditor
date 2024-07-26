@@ -34,9 +34,9 @@ namespace CadEditor
             {
                 for (int i = 0; i < 16; i++)
                 {
-                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.defaultNesColors[curPal[i]]), i % 4 * 32, (i / 4) * 32, 32, 32);
+                    g.FillRectangle(new SolidBrush(ConfigScript.videoNes.DefaultNesColors[curPal[i]]), i % 4 * 32, (i / 4) * 32, 32, 32);
                     if (showNo)
-                        g.DrawString(String.Format("{0:X2}", curPal[i]), new Font("Arial", 6), Brushes.White, new Rectangle(i % 4 * 32, (i / 4) * 32, 32, 32));
+                        g.DrawString(string.Format("{0:X2}", curPal[i]), new Font("Arial", 6), Brushes.White, new Rectangle(i % 4 * 32, (i / 4) * 32, 32, 32));
                 }
             }
             pbPal.Image = palImage;

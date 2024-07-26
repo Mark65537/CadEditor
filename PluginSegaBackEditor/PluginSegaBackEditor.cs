@@ -10,7 +10,7 @@ namespace PluginSegaBackEditor
 {
     public class PluginSegaBackEditor : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Sega Back Editor";
         }

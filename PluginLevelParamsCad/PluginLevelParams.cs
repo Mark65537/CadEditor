@@ -12,7 +12,7 @@ namespace PluginLevelParamsCad
 {
     public class PluginLevelParams : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Chip and Dale Level Parameters Editor";
         }

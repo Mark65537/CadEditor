@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using CadEditor;
+using System;
 using System.Resources;
-using CadEditor;
+using System.Windows.Forms;
 
 namespace PluginEditLayout
 {
     public class PluginEditLayout : IPlugin
     {
-        public string getName()
+        public string GetName()
         {
             return "Layout Editor";
         }

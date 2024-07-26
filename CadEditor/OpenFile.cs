@@ -82,12 +82,15 @@ namespace CadEditor
             configName = cbConfigName.Text;
             dumpName = ConfigScript.PreloadShowDumpField(configName) ? tbDumpName.Text : "";
             DialogResult = DialogResult.OK;
-            Close();
 
+            //Сохранение Глобальных значений
             Properties.Settings.Default["FileName"] = fileName;
             Properties.Settings.Default["DumpName"] = dumpName;
             Properties.Settings.Default["ConfigName"] = configName;
             Properties.Settings.Default.Save();
+
+            Close();
+
         }
 
         private void btClose_Click(object sender, EventArgs e)

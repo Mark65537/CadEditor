@@ -1,10 +1,9 @@
-﻿using System;
+﻿using CSScriptLibrary;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using CSScriptLibrary;
 
 namespace CadEditor
 {
@@ -106,7 +105,7 @@ namespace CadEditor
             if (plugin != null)
                 plugins.Add(plugin);
         }
-
+        //TODO зачем? возможно в будущем убрать
         public static void loadPluginWithSilentCatch(Action action)
         {
             try
@@ -180,6 +179,7 @@ namespace CadEditor
 
             screensOffset = new OffsetRec[1];
 
+            //TODO не вызывать функции которые относяться к другой консоли
             palOffset = callFromScript(asm, data, "*.getPalOffset", new OffsetRec(0, 1, 0));
             videoOffset = callFromScript(asm, data, "*.getVideoOffset", new OffsetRec(0, 1, 0));
             videoObjOffset = callFromScript(asm, data, "*.getVideoObjOffset", new OffsetRec(0, 1, 0));
@@ -363,7 +363,15 @@ namespace CadEditor
             string[] pluginNames = callFromScript(asm, data, "getPluginNames", new string[0]);
             foreach (var pluginName in pluginNames)
             {
-                var p = PluginLoader.LoadPlugin<IPlugin>(pluginName);
+                IPlugin p;
+                try
+                {
+                    p = PluginLoader.LoadPlugin<IPlugin>(pluginName);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"can't load plugin: {pluginName}\n message: {ex.Message}");
+                }
                 if (p != null)
                 {
                     p.loadFromConfig(asm, data);

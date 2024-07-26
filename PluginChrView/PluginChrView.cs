@@ -18,7 +18,7 @@ namespace PluginPrgView
     {
         public class PluginChrView : IPlugin
         {
-            public string getName()
+            public string GetName()
             {
                 return "Chr-bank viewer";
             }
@@ -26,7 +26,7 @@ namespace PluginPrgView
             {
                 this.formMain = formMain;
                 var rm = new ResourceManager("PluginChrView.Icon", this.GetType().Assembly);
-                var icon = (System.Drawing.Bitmap)rm.GetObject("icon_video");
+                var icon = (Bitmap)rm.GetObject("icon_video");
                 var item = new ToolStripButton("View video", icon, btHex_Click)
                 {
                     DisplayStyle = ToolStripItemDisplayStyle.Image

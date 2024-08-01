@@ -13,7 +13,7 @@ namespace CadEditor
         {
             try
             {
-                var globalConfigName = "CadEditor\\Config.cs";
+                var globalConfigName = "Config.cs";
 
                 var optionSet = new OptionSet() {
                     { "romname=",      v => OpenFile.fileName = v },
@@ -30,7 +30,7 @@ namespace CadEditor
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new MainForm());
         }
     }
 }

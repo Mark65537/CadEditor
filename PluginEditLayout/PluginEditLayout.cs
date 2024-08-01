@@ -11,7 +11,7 @@ namespace PluginEditLayout
         {
             return "Layout Editor";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("PluginEditLayout.Icon", this.GetType().Assembly);
@@ -21,7 +21,7 @@ namespace PluginEditLayout
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -35,6 +35,6 @@ namespace PluginEditLayout
             formMain.subeditorOpen(f, (ToolStripButton)sender, true);
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 }

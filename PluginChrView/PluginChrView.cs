@@ -22,7 +22,7 @@ namespace PluginPrgView
             {
                 return "Chr-bank viewer";
             }
-            public void addSubeditorButton(FormMain formMain)
+            public void addSubeditorButton(MainForm formMain)
             {
                 this.formMain = formMain;
                 var rm = new ResourceManager("PluginChrView.Icon", this.GetType().Assembly);
@@ -34,7 +34,7 @@ namespace PluginPrgView
                 formMain.addSubeditorButton(item);
             }
 
-            public void addToolButton(FormMain formMain)
+            public void addToolButton(MainForm formMain)
             {
             }
 
@@ -48,7 +48,7 @@ namespace PluginPrgView
                 formMain.subeditorOpen(f, (ToolStripButton)sender, false);
             }
 
-            FormMain formMain;
+            MainForm formMain;
         }
     }
 

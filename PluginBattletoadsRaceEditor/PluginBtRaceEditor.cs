@@ -18,7 +18,7 @@ namespace BtRaceEditor
             return "Battletoads Race Editor";
         }
 
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("BtRaceEditor.Icon", this.GetType().Assembly);
@@ -30,7 +30,7 @@ namespace BtRaceEditor
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -47,7 +47,7 @@ namespace BtRaceEditor
             formMain.subeditorOpen(f, (ToolStripButton)sender, false);
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 
     public static class BtConfig

@@ -14,7 +14,7 @@ namespace PluginSegaBackEditor
         {
             return "Sega Back Editor";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("PluginSegaBackEditor.Icon", this.GetType().Assembly);
@@ -26,7 +26,7 @@ namespace PluginSegaBackEditor
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -41,6 +41,6 @@ namespace PluginSegaBackEditor
         {
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 }

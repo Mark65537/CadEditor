@@ -16,7 +16,7 @@ namespace PluginCompressLZKN
         {
             return "Compress manager for KONAMI games uses LZKN compression";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("PluginCompressLZKN.Icon", this.GetType().Assembly);
@@ -26,7 +26,7 @@ namespace PluginCompressLZKN
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -42,7 +42,7 @@ namespace PluginCompressLZKN
             formMain.subeditorOpen(f, (ToolStripButton)sender, true);
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 
     public class CompressParams

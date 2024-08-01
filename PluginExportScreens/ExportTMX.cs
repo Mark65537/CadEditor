@@ -167,9 +167,9 @@ namespace PluginExportScreens
             }
         }
 
-        private FormMain formMain;
+        private MainForm formMain;
 
-        public void setFormMain(FormMain f)
+        public void setFormMain(MainForm f)
         {
             formMain = f;
         }

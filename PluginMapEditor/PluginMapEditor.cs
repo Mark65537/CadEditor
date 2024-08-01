@@ -18,7 +18,7 @@ namespace PluginMapEditor
         {
             return "Map Editor";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("PluginMapEditor.Icon", this.GetType().Assembly);
@@ -28,7 +28,7 @@ namespace PluginMapEditor
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -48,7 +48,7 @@ namespace PluginMapEditor
             MapConfig.sharedPal = ConfigScript.callFromScript(asm, data, "*.mapEditorSharePallete", false);
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 
     public struct MapInfo

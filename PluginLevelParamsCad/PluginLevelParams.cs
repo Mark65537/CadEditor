@@ -16,7 +16,7 @@ namespace PluginLevelParamsCad
         {
             return "Chip and Dale Level Parameters Editor";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             //var rm = new ResourceManager("PluginMapEditor.Icon", this.GetType().Assembly);
@@ -26,7 +26,7 @@ namespace PluginLevelParamsCad
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -48,6 +48,6 @@ namespace PluginLevelParamsCad
             formMain.subeditorOpen(f, (ToolStripButton)sender, true);
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 }

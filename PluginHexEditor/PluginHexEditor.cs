@@ -15,7 +15,7 @@ namespace PluginHexEditor
         {
             return "Hex Editor";
         }
-      public void addSubeditorButton(FormMain formMain)
+      public void addSubeditorButton(MainForm formMain)
       {
         this.formMain = formMain;
         var rm = new ResourceManager("PluginHexEditor.Icon", this.GetType().Assembly);
@@ -25,7 +25,7 @@ namespace PluginHexEditor
         formMain.addSubeditorButton(item);
       }
 
-      public void addToolButton(FormMain formMain)
+      public void addToolButton(MainForm formMain)
       {
       }
 
@@ -41,6 +41,6 @@ namespace PluginHexEditor
           formMain.subeditorOpen(f, (ToolStripButton)sender, true);
       }
 
-      FormMain formMain;
+      MainForm formMain;
     }
 }

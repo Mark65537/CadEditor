@@ -16,11 +16,11 @@ namespace PluginExportScreens
         {
             return "Export screens";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("PluginExportScreens.Icon", this.GetType().Assembly);
@@ -243,6 +243,6 @@ namespace PluginExportScreens
             }
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 }

@@ -7,42 +7,43 @@ using System.Windows.Forms;
 
 namespace CadEditor
 {
-    public delegate int   GetVideoPageAddrFunc(int videoPageId);
+    #region Делегаты
+    public delegate int GetVideoPageAddrFunc(int videoPageId);
     public delegate byte[] GetVideoChunkFunc(int videoPageId);
-    public delegate void   SetVideoChunkFunc(int videoPageId, byte[] videoChunk);
+    public delegate void SetVideoChunkFunc(int videoPageId, byte[] videoChunk);
 
     public delegate ObjRec[] GetBlocksFunc(int blockId);
-    public delegate void   SetBlocksFunc(int blockIndex, ObjRec[] blocksData);
+    public delegate void SetBlocksFunc(int blockIndex, ObjRec[] blocksData);
     public delegate int GetBlocksAddrFunc(int blockId);
     public delegate int GetBlocksCountFunc(int blockId);
 
     public delegate BigBlock[] GetBigBlocksFunc(int bigBlockId);
-    public delegate void   SetBigBlocksFunc(int bigTileIndex, BigBlock[] bigBlocks);
+    public delegate void SetBigBlocksFunc(int bigTileIndex, BigBlock[] bigBlocks);
     public delegate int GetBigBlocksAddrFunc(int bigBlockId);
     public delegate int GetBigBlocksCountFunc(int hierLevel, int bigBlockId);
 
     public delegate byte[] GetSegaMappingFunc(int bigBlockId);
-    public delegate void   SetSegaMappingFunc(int bigTileIndex, byte[] bigBlocks);
+    public delegate void SetSegaMappingFunc(int bigTileIndex, byte[] bigBlocks);
 
     public delegate byte[] GetPalFunc(int palId);
-    public delegate void   SetPalFunc(int palId, byte[] pallete);
+    public delegate void SetPalFunc(int palId, byte[] pallete);
 
     public delegate GroupRec[] GetGroupsFunc();
     public delegate IList<LevelRec> GetLevelRecsFunc();
 
-    public delegate void   RenderToMainScreenFunc(Graphics g, int curScale, int scrNo);
+    public delegate void RenderToMainScreenFunc(Graphics g, int curScale, int scrNo);
 
     public delegate List<ObjectList> GetObjectsFunc(int levelNo);
-    public delegate bool            SetObjectsFunc(int levelNo, List<ObjectList> objects); 
-    public delegate void            SortObjectsFunc(int levelNo, int listNo, List<ObjectRec> objects);
+    public delegate bool SetObjectsFunc(int levelNo, List<ObjectList> objects);
+    public delegate void SortObjectsFunc(int levelNo, int listNo, List<ObjectRec> objects);
 
-    public delegate LevelLayerData  GetLayoutFunc(int levelNo);
+    public delegate LevelLayerData GetLayoutFunc(int levelNo);
     public delegate bool SetLayoutFunc(LevelLayerData date, int levelNo);
 
     public delegate Dictionary<String, int> GetObjectDictionaryFunc(int listNo, int objNo);
 
-    public delegate int  ConvertScreenTileFunc(int val);
-    public delegate int  GetBigTileNoFromScreenFunc(int[] screenData, int index);
+    public delegate int ConvertScreenTileFunc(int val);
+    public delegate int GetBigTileNoFromScreenFunc(int[] screenData, int index);
     public delegate void SetBigTileToScreenFunc(int[] screenData, int index, int value);
 
     public delegate byte[] LoadSegaBackFunc();
@@ -58,7 +59,8 @@ namespace CadEditor
     public delegate int[] LoadPhysicsLayer(int scrNo);
     public delegate void SavePhysicsLayer(int scrNo, int[] data);
 
-    public delegate int GetPalBytesAddrFunc(int blockId);
+    public delegate int GetPalBytesAddrFunc(int blockId); 
+    #endregion
 
     public class ConfigScript
     {

@@ -23,21 +23,32 @@ namespace CadEditor
             var addPath = "";
             if (!File.Exists("scroll_sprites//scrolls.png"))
                 addPath = "..//";
-            scrollSprites.Images.Clear();
-            scrollSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//scrolls.png"));
-            doorSprites.Images.Clear();
-            doorSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//doors.png"));
-            dirSprites.Images.Clear();
-            dirSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//dirs.png"));
+
+            try
+            {
+                scrollSprites.Images.Clear();
+                scrollSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//scrolls.png"));
+                doorSprites.Images.Clear();
+                doorSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//doors.png"));
+                dirSprites.Images.Clear();
+                dirSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//dirs.png"));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"error in PluginEditLayout : {ex.Message}");
+            }
+
             objPanel.Controls.Clear();
             objPanel.SuspendLayout();
 
             for (int i = 0; i < scrollSprites.Images.Count; i++)
             {
-                var but = new Button();
-                but.Size = new Size(32, 32);
-                but.ImageList = scrollSprites;
-                but.ImageIndex = i;
+                var but = new Button()
+                {
+                    Size = new Size(32, 32),
+                    ImageList = scrollSprites,
+                    ImageIndex = i
+                };               
                 but.Click += buttonScrollClick;
                 objPanel.Controls.Add(but);
             }

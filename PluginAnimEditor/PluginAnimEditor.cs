@@ -14,7 +14,7 @@ namespace PluginAnimEditor
         {
             return "Anim Editor (Capcom)";
         }
-        public void addSubeditorButton(FormMain formMain)
+        public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
             var rm = new ResourceManager("PluginAnimEditor.Icon", this.GetType().Assembly);
@@ -24,7 +24,7 @@ namespace PluginAnimEditor
             formMain.addSubeditorButton(item);
         }
 
-        public void addToolButton(FormMain formMain)
+        public void addToolButton(MainForm formMain)
         {
         }
 
@@ -50,7 +50,7 @@ namespace PluginAnimEditor
             formMain.subeditorOpen(f, (ToolStripButton)sender, true);
         }
 
-        FormMain formMain;
+        MainForm formMain;
     }
 
     public static class AnimConfig

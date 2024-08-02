@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace CadEditor
 {
@@ -19,70 +15,37 @@ namespace CadEditor
         private void EditForm_Load(object sender, EventArgs e)
         {
             makeScreens();
+            LoadSpritesFromResources();
+            InitializePanels();
+            InitializeComboBoxes();
+            InitializeLayoutComboBox();
+        }
 
-            var addPath = "";
-            if (!File.Exists("scroll_sprites//scrolls.png"))
-                addPath = "..//";
-
+        private void LoadSpritesFromResources()
+        {
             try
             {
-                scrollSprites.Images.Clear();
-                scrollSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//scrolls.png"));
-                doorSprites.Images.Clear();
-                doorSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//doors.png"));
-                dirSprites.Images.Clear();
-                dirSprites.Images.AddStrip(Image.FromFile(addPath + "scroll_sprites//dirs.png"));
+                LoadImageListFromResources(scrollSprites, PluginEditLayout.EditLayout.scrolls);
+                LoadImageListFromResources(doorSprites, PluginEditLayout.EditLayout.doors);
+                LoadImageListFromResources(dirSprites, PluginEditLayout.EditLayout.dirs);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"error in PluginEditLayout : {ex.Message}");
             }
+        }
 
-            objPanel.Controls.Clear();
-            objPanel.SuspendLayout();
+        private void LoadImageListFromResources(ImageList imageList, Bitmap resource)
+        {
+            imageList.Images.Clear();
+            imageList.Images.AddStrip(resource);
+        }
 
-            for (int i = 0; i < scrollSprites.Images.Count; i++)
-            {
-                var but = new Button()
-                {
-                    Size = new Size(32, 32),
-                    ImageList = scrollSprites,
-                    ImageIndex = i
-                };               
-                but.Click += buttonScrollClick;
-                objPanel.Controls.Add(but);
-            }
-            objPanel.ResumeLayout();
-
-            doorsPanel.SuspendLayout();
-
-            for (int i = 0; i < doorSprites.Images.Count; i++)
-            {
-                var but = new Button();
-                but.Size = new Size(32, 32);
-                but.ImageList = doorSprites;
-                but.ImageIndex = i;
-                but.Click += buttonDoorClick;
-                doorsPanel.Controls.Add(but);
-            }
-            doorsPanel.ResumeLayout();
-
-            blocksPanel.Controls.Clear();
-            blocksPanel.SuspendLayout();
-            for (int i = 0; i < ConfigScript.screensOffset[scrLevelNo].recCount; i++)
-            {
-                var but = new Button
-                {
-                    Size = new Size(64, 64),
-                    ImageList = screenImages,
-                    ImageIndex = i
-                };
-                but.Click += buttonBlockClick;
-                blocksPanel.Controls.Add(but);
-
-            }
-            blocksPanel.ResumeLayout();
-
+        private void InitializePanels()
+        {
+            InitializePanel(objPanel, scrollSprites, buttonScrollClick);
+            InitializePanel(doorsPanel, doorSprites, buttonDoorClick);
+            InitializeBlocksPanel();
             UtilsGui.setCbItemsCount(cbVideoNo, ConfigScript.videoOffset.recCount);
             UtilsGui.setCbItemsCount(cbBigBlockNo, ConfigScript.bigBlocksOffsets[0].recCount);
             UtilsGui.setCbItemsCount(cbBlockNo, ConfigScript.blocksOffset.recCount);
@@ -91,16 +54,68 @@ namespace CadEditor
             cbBigBlockNo.SelectedIndex = 0;
             cbBlockNo.SelectedIndex = 0;
             cbPaletteNo.SelectedIndex = 0;
+        }
 
+        private void InitializePanel(Panel panel, ImageList imageList, EventHandler clickHandler)
+        {
+            panel.Controls.Clear();
+            panel.SuspendLayout();
+
+            for (int i = 0; i < imageList.Images.Count; i++)
+            {
+                var button = new Button
+                {
+                    Size = new Size(32, 32),
+                    ImageList = imageList,
+                    ImageIndex = i
+                };
+                button.Click += clickHandler;
+                panel.Controls.Add(button);
+            }
+
+            panel.ResumeLayout();
+        }
+
+        private void InitializeBlocksPanel()
+        {
+            blocksPanel.Controls.Clear();
+            blocksPanel.SuspendLayout();
+
+            for (int i = 0; i < ConfigScript.screensOffset[scrLevelNo].recCount; i++)
+            {
+                var button = new Button
+                {
+                    Size = new Size(64, 64),
+                    ImageList = screenImages,
+                    ImageIndex = i
+                };
+                button.Click += buttonBlockClick;
+                blocksPanel.Controls.Add(button);
+            }
+
+            blocksPanel.ResumeLayout();
+        }
+
+        private void InitializeComboBoxes()
+        {
             cbLayoutNo.Items.Clear();
             foreach (var lr in ConfigScript.getLevelRecs())
-                cbLayoutNo.Items.Add(String.Format("0x{0:X} ({1}x{2})", lr.layoutAddr, lr.width, lr.height));
-
+            {
+                cbLayoutNo.Items.Add(string.Format("0x{0:X} ({1}x{2})", lr.layoutAddr, lr.width, lr.height));
+            }
             cbLayoutNo.SelectedIndex = 0;
-
             cbShowScrolls.Visible = ConfigScript.isShowScrollsInLayout();
-            btExport.Visible =
-            pnParamGeneric.Visible = true;
+            btExport.Visible = pnParamGeneric.Visible = true;
+        }
+
+        private void InitializeLayoutComboBox()
+        {
+            cbLayoutNo.Items.Clear();
+            foreach (var lr in ConfigScript.getLevelRecs())
+            {
+                cbLayoutNo.Items.Add(string.Format("0x{0:X} ({1}x{2})", lr.layoutAddr, lr.width, lr.height));
+            }
+            cbLayoutNo.SelectedIndex = 0;
         }
 
         private void reloadLevelLayer()
@@ -113,12 +128,23 @@ namespace CadEditor
         private void makeScreens()
         {
             screenImages.Images.Clear();
-            screenImages.Images.Add(makeBlackScreen(64,64,0));
-            for (int scrNo = 0; scrNo < 256/*ConfigScript.screensOffset[scrLevelNo].recCount*/; scrNo++)
-                screenImages.Images.Add(makeBlackScreen(64, 64, scrNo + 1));
+            for (int scrNo = 0; scrNo <= 256/*ConfigScript.screensOffset[scrLevelNo].recCount*/; scrNo++)
+                screenImages.Images.Add(CreateLabeledBitmap(64, 64, scrNo));
         }
 
-        private Image makeBlackScreen(int w, int h, int no)
+        /// <summary>
+        /// Creates a bitmap image with specified width and height, fills it with black color, draws a green border, and optionally adds a hexadecimal number.
+        /// </summary>
+        /// <param name="w">The width of the bitmap.</param>
+        /// <param name="h">The height of the bitmap.</param>
+        /// <param name="no">The number to be converted to hexadecimal and drawn on the bitmap if the condition is met.</param>
+        /// <returns>A Bitmap object with the specified modifications.</returns>
+        /// <example>
+        /// <code>
+        /// Bitmap image = CreateLabeledBitmap(200, 100, 1234);
+        /// </code>
+        /// </example>
+        private Image CreateLabeledBitmap(int w, int h, int no)
         {
             var b = new Bitmap(w, h);
             using (var g = Graphics.FromImage(b))
@@ -126,7 +152,7 @@ namespace CadEditor
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, w, h));
                 g.DrawRectangle(new Pen(Color.Green, w/32.0f), new Rectangle(0, 0, w, h));
                 if (no % 256 != 0)
-                  g.DrawString(String.Format("{0:X}", no), new Font("Arial", w/8.0f), Brushes.White, new Point(0, 0));
+                  g.DrawString(string.Format("{0:X}", no), new Font("Arial", w/8.0f), Brushes.White, new Point(0, 0));
             }
             return b;
         }
@@ -144,7 +170,7 @@ namespace CadEditor
                     int scroll = curLevelLayerData.scroll != null ? curLevelLayerData.scroll[y * w + x] : 0;
                     g.DrawImage(screenImages.Images[index % 256], new Rectangle(x*64, y*64, 64, 64));
                     if (showScrolls)
-                      g.DrawString(String.Format("{0:X}", scroll), new Font("Arial", 8), new SolidBrush(Color.Red), new Rectangle(x * 64 + 24, y * 64 + 24, 32, 16));
+                      g.DrawString(string.Format("{0:X}", scroll), new Font("Arial", 8), new SolidBrush(Color.Red), new Rectangle(x * 64 + 24, y * 64 + 24, 32, 16));
                 }
             }
         }
@@ -165,8 +191,10 @@ namespace CadEditor
         {
             int dx = e.X / 64;
             int dy = e.Y / 64;
+
             if (dx >= curLevelLayerData.width || dy >= curLevelLayerData.height)
                 return;
+
             dirty = true;
             int index = dy * curLevelLayerData.width + dx;
 

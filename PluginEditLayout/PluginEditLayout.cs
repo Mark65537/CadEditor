@@ -1,5 +1,6 @@
 ﻿using CadEditor;
 using System;
+using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
 
@@ -14,8 +15,7 @@ namespace PluginEditLayout
         public void addSubeditorButton(MainForm formMain)
         {
             this.formMain = formMain;
-            var rm = new ResourceManager("PluginEditLayout.Icon", this.GetType().Assembly);
-            var icon = (System.Drawing.Bitmap)rm.GetObject("icon_layout");
+            var icon = new Bitmap("icon.png");
             var item = new ToolStripButton("Layout Editor", icon, btLayout_Click);
             item.DisplayStyle = ToolStripItemDisplayStyle.Image;
             formMain.addSubeditorButton(item);
@@ -31,7 +31,7 @@ namespace PluginEditLayout
 
         private void btLayout_Click(object sender, EventArgs e)
         {
-            var f = new EditLayout();
+            var f = new CadEditor.EditLayout();
             formMain.subeditorOpen(f, (ToolStripButton)sender, true);
         }
 

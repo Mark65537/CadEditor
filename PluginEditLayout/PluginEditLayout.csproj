@@ -47,10 +47,10 @@
     <Compile Include="EditLayout.Designer.cs">
       <DependentUpon>EditLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Icon.Designer.cs">
+    <Compile Include="EditLayout1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Icon.resx</DependentUpon>
+      <DependentUpon>EditLayout.resx</DependentUpon>
     </Compile>
     <Compile Include="PluginEditLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,21 +58,21 @@
   <ItemGroup>
     <EmbeddedResource Include="EditLayout.resx">
       <DependentUpon>EditLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Icon.resx">
+      <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Icon.Designer.cs</LastGenOutput>
+      <LastGenOutput>EditLayout1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Resources\Icon.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon-layout.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CadEditor\CadEditor.csproj">
       <Project>{bd2a990c-9d64-472d-9c78-1429c666604b}</Project>
       <Name>CadEditor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

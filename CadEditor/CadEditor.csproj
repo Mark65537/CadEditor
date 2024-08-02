@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cadIco.png" />
+    <None Include="Resources\bttAdditionalRender.Image.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

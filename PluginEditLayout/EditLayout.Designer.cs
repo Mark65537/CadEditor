@@ -112,12 +112,6 @@
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
-            // scrollSprites
-            // 
-            this.scrollSprites.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.scrollSprites.ImageSize = new System.Drawing.Size(16, 16);
-            this.scrollSprites.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // objPanel
             // 
             this.objPanel.AutoScroll = true;
@@ -126,11 +120,19 @@
             this.objPanel.Size = new System.Drawing.Size(325, 44);
             this.objPanel.TabIndex = 20;
             // 
+            // scrollSprites
+            // 
+            this.scrollSprites.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.scrollSprites.ImageSize = new System.Drawing.Size(16, 16);
+            this.scrollSprites.TransparentColor = System.Drawing.Color.Transparent;
+            //this.scrollSprites.Images.AddStrip((System.Drawing.Image)resources.GetObject("scrolls"));
+            // 
             // doorSprites
             // 
             this.doorSprites.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.doorSprites.ImageSize = new System.Drawing.Size(16, 16);
             this.doorSprites.TransparentColor = System.Drawing.Color.Transparent;
+            //this.doorSprites.Images.AddStrip((System.Drawing.Image)resources.GetObject("doors"));
             // 
             // cbShowScrolls
             // 
@@ -150,6 +152,7 @@
             this.dirSprites.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.dirSprites.ImageSize = new System.Drawing.Size(64, 64);
             this.dirSprites.TransparentColor = System.Drawing.Color.Transparent;
+            //this.dirSprites.Images.AddStrip((System.Drawing.Image)resources.GetObject("dirs"));
             // 
             // doorsPanel
             // 

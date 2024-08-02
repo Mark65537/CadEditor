@@ -25,6 +25,7 @@ namespace CadEditor
         {
             try
             {
+                //TODO не может найти ресурсы
                 LoadImageListFromResources(scrollSprites, PluginEditLayout.EditLayout.scrolls);
                 LoadImageListFromResources(doorSprites, PluginEditLayout.EditLayout.doors);
                 LoadImageListFromResources(dirSprites, PluginEditLayout.EditLayout.dirs);

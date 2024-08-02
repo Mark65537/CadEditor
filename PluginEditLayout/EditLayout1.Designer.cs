@@ -22,7 +22,7 @@ namespace PluginEditLayout {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class EditLayout {
+    public class EditLayout {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace PluginEditLayout {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PluginEditLayout.EditLayout", typeof(EditLayout).Assembly);
@@ -51,7 +51,7 @@ namespace PluginEditLayout {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dirs {
+        public static System.Drawing.Bitmap dirs {
             get {
                 object obj = ResourceManager.GetObject("dirs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Point, аналогичного {X=357,Y=17}.
         /// </summary>
-        internal static System.Drawing.Point dirSprites_TrayLocation {
+        public static System.Drawing.Point dirSprites_TrayLocation {
             get {
                 object obj = ResourceManager.GetObject("dirSprites.TrayLocation", resourceCulture);
                 return ((System.Drawing.Point)(obj));
@@ -83,7 +83,7 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap doors {
+        public static System.Drawing.Bitmap doors {
             get {
                 object obj = ResourceManager.GetObject("doors", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,7 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Point, аналогичного {X=249,Y=17}.
         /// </summary>
-        internal static System.Drawing.Point doorSprites_TrayLocation {
+        public static System.Drawing.Point doorSprites_TrayLocation {
             get {
                 object obj = ResourceManager.GetObject("doorSprites.TrayLocation", resourceCulture);
                 return ((System.Drawing.Point)(obj));
@@ -103,7 +103,7 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Point, аналогичного {X=17,Y=17}.
         /// </summary>
-        internal static System.Drawing.Point screenImages_TrayLocation {
+        public static System.Drawing.Point screenImages_TrayLocation {
             get {
                 object obj = ResourceManager.GetObject("screenImages.TrayLocation", resourceCulture);
                 return ((System.Drawing.Point)(obj));
@@ -113,9 +113,9 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap scrolls {
+        public static System.Drawing.Bitmap scrolls {
             get {
-                object obj = ResourceManager.GetObject("scrolls", resourceCulture);
+                object obj = ResourceManager.GetObject("scrolls");
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,7 +123,7 @@ namespace PluginEditLayout {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Point, аналогичного {X=138,Y=17}.
         /// </summary>
-        internal static System.Drawing.Point scrollSprites_TrayLocation {
+        public static System.Drawing.Point scrollSprites_TrayLocation {
             get {
                 object obj = ResourceManager.GetObject("scrollSprites.TrayLocation", resourceCulture);
                 return ((System.Drawing.Point)(obj));

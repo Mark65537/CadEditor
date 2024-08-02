@@ -59,7 +59,7 @@
     <EmbeddedResource Include="EditLayout.resx">
       <DependentUpon>EditLayout.cs</DependentUpon>
       <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EditLayout1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
@@ -70,9 +70,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.png">
+    <EmbeddedResource Include="icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

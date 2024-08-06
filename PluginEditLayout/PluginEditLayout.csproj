@@ -47,11 +47,6 @@
     <Compile Include="EditLayout.Designer.cs">
       <DependentUpon>EditLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditLayout1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EditLayout.resx</DependentUpon>
-    </Compile>
     <Compile Include="PluginEditLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,7 +54,6 @@
     <EmbeddedResource Include="EditLayout.resx">
       <DependentUpon>EditLayout.cs</DependentUpon>
       <SubType>Designer</SubType>
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EditLayout1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
@@ -70,9 +64,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

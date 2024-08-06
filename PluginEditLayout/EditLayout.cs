@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Resources;
 using System.Windows.Forms;
 
 namespace CadEditor
@@ -11,6 +12,26 @@ namespace CadEditor
         {
             InitializeComponent();
         }
+
+        private int curActiveBlock;
+        private MapDrawMode drawMode = MapDrawMode.Screens;
+        private bool dirty;
+        private bool showScrolls;
+        private LevelLayerData curLevelLayerData;
+
+        private int curActiveLayout;
+
+        //for export params
+        private int curVideoNo;
+        private int curBigBlockNo;
+        private int curBlockNo;
+        private int curPalleteNo;
+
+        private int curWidth = 1;
+        private int curHeight = 1;
+
+        //
+        private int scrLevelNo = 0;
 
         private void EditForm_Load(object sender, EventArgs e)
         {
@@ -25,10 +46,15 @@ namespace CadEditor
         {
             try
             {
-                //TODO не может найти ресурсы
-                LoadImageListFromResources(scrollSprites, PluginEditLayout.EditLayout.scrolls);
-                LoadImageListFromResources(doorSprites, PluginEditLayout.EditLayout.doors);
-                LoadImageListFromResources(dirSprites, PluginEditLayout.EditLayout.dirs);
+                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditLayout));
+
+                scrollSprites.Images.AddStrip((Image)(resources.GetObject("scrolls")));
+                doorSprites.Images.AddStrip((Image)(resources.GetObject("doors")));
+                dirSprites.Images.AddStrip((Image)(resources.GetObject("dirs")));
+
+                //LoadImageListFromResources(scrollSprites, PluginEditLayout.EditLayout.scrolls);
+                //LoadImageListFromResources(doorSprites, PluginEditLayout.EditLayout.doors);
+                //LoadImageListFromResources(dirSprites, PluginEditLayout.EditLayout.dirs);
             }
             catch (Exception ex)
             {
@@ -214,25 +240,7 @@ namespace CadEditor
             pbMap.Invalidate();
         }
 
-        private int curActiveBlock;
-        private MapDrawMode drawMode = MapDrawMode.Screens;
-        private bool dirty;
-        private bool showScrolls;
-        private LevelLayerData curLevelLayerData;
-
-        private int curActiveLayout;
-
-        //for export params
-        private int curVideoNo;
-        private int curBigBlockNo;
-        private int curBlockNo;
-        private int curPalleteNo;
-
-        private int curWidth = 1;
-        private int curHeight = 1;
-
-        //
-        private int scrLevelNo = 0;
+        
         
 
         private void cbLevel_SelectedIndexChanged(object sender, EventArgs e)

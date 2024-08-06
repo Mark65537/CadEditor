@@ -31,32 +31,21 @@ namespace CadEditor
         private void Form1_Load(object sender, EventArgs e)
         {
             KeyPreview = true;
-            if (OpenFile.fileName == "" || OpenFile.configName == "")
-            {
-                if (!openFile())
-                {
-                    Close();
-                    return;
-                }
-            }
-            else
-            {
-                if (!Globals.LoadData(OpenFile.fileName, OpenFile.dumpName, OpenFile.configName))
-                {
-                    Close();
-                    return;
-                }
-                setDefaultScale();
-                fileLoaded = true;
 
-                resetControls();
-            }
+            Globals.LoadData(ConfigScript.romName, ConfigScript.dumpName, ConfigScript.configName);
+                
+            setDefaultScale();
+            fileLoaded = true;
+
+            resetControls();
+            
 
             subeditorsDict = new Dictionary<ToolStripButton, Func<Form>> { 
                  { bttBigBlocks,    ()=>{ var f = new BigBlockEdit();  f.setFormMain(this); return f;} },
                  { bttBlocks,       makeBlocksEditor },
                  { bttEnemies,      ()=>{ var f = new EnemyEditor();  f.setFormMain(this); return f;}  },
             };
+            setWindowText();
             MinimumSize = Size;
         }
 

@@ -79,7 +79,7 @@ namespace CadEditor
                 var asm = new AsmHelper(CSScript.Load(fileName));
                 object data = asm.CreateObject("Config");
                 romName = callFromScript(asm, data, "*.getFileName", "");
-                cfgName = callFromScript(asm, data, "*.getConfigName", "");
+                configName = callFromScript(asm, data, "*.getConfigName", "");
                 dumpName = callFromScript(asm, data, "*.getDumpName", "");
                 nesColors = callFromScript<Color[]>(asm, data, "*.getNesColors", null);
             }
@@ -882,7 +882,7 @@ namespace CadEditor
         //global editor settings
         public static string  romName;
         public static string dumpName;
-        public static string  cfgName;
+        public static string  configName;
         public static Color[] nesColors;
 
         public static List<IPlugin> plugins = new List<IPlugin>();

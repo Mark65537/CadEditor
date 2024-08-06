@@ -17,6 +17,12 @@ namespace CadEditor
             InitializeComponent();
         }
 
+        #region статические переменные
+        public static string fileName = "";
+        public static string dumpName = "";
+        public static string configName = ""; 
+        #endregion
+
         private void tbFileName_Click(object sender, EventArgs e)
         {
             ofOpenDialog.Filter = "";
@@ -63,7 +69,7 @@ namespace CadEditor
             }
             catch (Exception)
             {
-                ;
+                //TODO добавить логгер
             }
         }
 
@@ -100,10 +106,6 @@ namespace CadEditor
             Close();
         }
 
-        public static string fileName = "";
-        public static string dumpName = "";
-        public static string configName="";
-
         private void OpenFile_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default["FileName"].ToString() != "")
@@ -122,9 +124,9 @@ namespace CadEditor
                 tbFileName.Text = ConfigScript.romName;
             if (dumpName == "" && ConfigScript.dumpName != "")
                 tbDumpName.Text = ConfigScript.dumpName;
-            if (configName == "" && ConfigScript.cfgName != "")
+            if (configName == "" && ConfigScript.configName != "")
             {
-                cbConfigName.Text = ConfigScript.cfgName;
+                cbConfigName.Text = ConfigScript.configName;
             }
 
             ofOpenDialog.InitialDirectory = Environment.CurrentDirectory;
